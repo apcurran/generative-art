@@ -51,7 +51,9 @@ class Root {
 }
 
 window.addEventListener("mousemove", (event) => {
-    const root = new Root(event.x, event.y);
-
-    root.update();
+    for (let i = 0; i < 3; i++) {
+        const root = new Root(event.x, event.y);
+    
+        root.update();
+    }
 });
