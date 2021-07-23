@@ -23,6 +23,8 @@ class Root {
         this.velocityOfSize = getRandomFloatFromRange(0.05, 0.2);
         this.angle = 0;
         this.velocityOfAngle = getRandomFloatFromRange(0.3, 0.9);
+
+        this.lightness = 10;
     }
 
     update() {
@@ -31,10 +33,14 @@ class Root {
         this.size += this.velocityOfSize;
         this.angle += this.velocityOfAngle;
 
+        if (this.lightness < 70) {
+            this.lightness += 0.25;
+        }
+
         if (this.size < this.maxSize) {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = "hsl(140, 100%, 50%)";
+            ctx.fillStyle = `hsl(140, 100%, ${this.lightness}%)`;
             ctx.fill();
             ctx.stroke();
 
