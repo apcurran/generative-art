@@ -20,12 +20,16 @@ class Root {
         this.speedY = getRandomFloatFromRange(-2, 2);
         this.maxSize = getRandomFloatFromRange(5, 12);
         this.size = getRandomFloatFromRange(2, 3);
+        this.velocityOfSize = getRandomFloatFromRange(0.05, 0.2);
+        this.angle = 0;
+        this.velocityOfAngle = getRandomFloatFromRange(0.3, 0.9);
     }
 
     update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        this.size += 0.1;
+        this.x += this.speedX + Math.sin(this.angle);
+        this.y += this.speedY + Math.sin(this.angle);
+        this.size += this.velocityOfSize;
+        this.angle += this.velocityOfAngle;
 
         if (this.size < this.maxSize) {
             ctx.beginPath();
